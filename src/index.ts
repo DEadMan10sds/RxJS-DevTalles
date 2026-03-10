@@ -1,39 +1,17 @@
-import { Observable, Observer, Subject, Subscriber, Subscription } from "rxjs";
+import { Of } from "./04-ObservableCreation/of";
+import { Range } from "./04-ObservableCreation/range";
+import { MapOperator } from "./05-Operators/MapOperator";
+import { FromAndOf } from "./04-ObservableCreation/FromAndOf";
+import { FromEvent } from "./04-ObservableCreation/fromEvent";
+import { IntervalAndTimer } from "./04-ObservableCreation/IntervalAndTimer";
+import { AsyncSchedulerClass } from "./04-ObservableCreation/AsyncScheduler";
+import { Pluck } from "./05-Operators/Pluck";
+import { MapTo } from "./05-Operators/MapTo";
+import { FilterOperator } from "./05-Operators/Filter";
 
-const observer: Observer<any> = {
-    next: value => {
-        console.log("Next",value)
-    },
-    error: console.warn,
-    complete: () => console.log("Finished")
-}
-
-
-const interval$ = new Observable<number>((subscriber: Subscriber<number>) => {
-    const randomNumber = setInterval(() => {
-        subscriber.next(Math.random())
-    }, 1000);
-
-    return () => {
-        clearInterval(randomNumber)
-    }
-});
-
-//const sub1 = interval$.subscribe(console.log);
-//const sub2 = interval$.subscribe(console.log);
-
-/**
- * 1.- Multiple casting -> sends same value to all subscribers
- * 2.- Is an observer
- * 3.- Can handle: next, error, complete
- */
-const subject$ = new Subject();
-interval$.subscribe(subject$)
-
-const sub1 = subject$.subscribe(console.log);
-const sub2 = subject$.subscribe(console.log);
+//Dummy class to handle multiple lessons
+class MainProgram extends FilterOperator{}
+const mainProgram = new MainProgram();
 
 
-setTimeout(() => {
-    
-}, 3500)
+mainProgram.excecute()
