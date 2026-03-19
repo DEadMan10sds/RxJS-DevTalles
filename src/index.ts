@@ -8,9 +8,10 @@ import { AsyncSchedulerClass } from "./04-ObservableCreation/AsyncScheduler";
 import { Pluck } from "./05-Operators/Pluck";
 import { MapTo } from "./05-Operators/MapTo";
 import { FilterOperator } from "./05-Operators/Filter";
+import { Tap } from "./05-Operators/Tap";
 
 //Dummy class to handle multiple lessons
-class MainProgram extends FilterOperator{}
+class MainProgram extends Tap{}
 const mainProgram = new MainProgram();
 
 
